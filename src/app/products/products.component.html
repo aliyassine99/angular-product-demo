@@ -1,0 +1,50 @@
+<div class="p-3">
+  <div class="card">
+    <div class="card-body">
+      <div class="card-body">
+        <div>
+          <input class="p-1"  type="text" [(ngModel)]="keyword">
+          <button  (click)="searchProducts(keyword)"
+                   class="btn btn-outline-success ms-1">
+            Search
+          </button>
+        </div>
+      </div>
+      <table class="table">
+        <thead>
+        <tr>
+          <th>Name</th> <th>Price</th> <th>Checked</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let product of products">
+          <td>{{product.name}}</td>
+          <td>{{product.price}}</td>
+          <td>
+            <button (click)="handleCheckProduct(product)"
+                    class="btn btn-outline-success">
+              {{ product.checked? "checked": "unchecked" }}
+
+            </button>
+          </td>
+          <td>
+            <button (click)="handleDelete(product)" class="btn btn-danger">
+              Delete
+            </button>
+          </td>
+          <td>
+            <button (click)="handleEdit(product)" class="btn btn-warning">
+              Edit
+            </button>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+      <ul class="nav nav-pills">
+        <li *ngFor="let page of [].constructor(2); let i = index">
+          <button (click)="paginate(i+1)" class="btn btn-danger">{{ i+1 }}</button></li>
+      </ul>
+
+    </div>
+  </div>
+</div>

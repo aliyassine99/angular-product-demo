@@ -1,0 +1,40 @@
+{
+  "products": [
+    {
+      "id": "4",
+      "name": "Smart 99",
+      "price": "4500",
+      "checked": true
+    },
+    {
+      "name": "Smart 67",
+      "price": "4500",
+      "checked": false,
+      "id": "5"
+    },
+    {
+      "id": "5223",
+      "name": "Rfff",
+      "price": "23",
+      "checked": true
+    },
+    {
+      "id": "a6a7",
+      "name": "Rfff",
+      "price": "23",
+      "checked": true
+    },
+    {
+      "id": "6cd7",
+      "name": "Weeee",
+      "price": "21",
+      "checked": true
+    },
+    {
+      "id": "4ac2",
+      "name": "Weeee",
+      "price": "21",
+      "checked": true
+    }
+  ]
+}
