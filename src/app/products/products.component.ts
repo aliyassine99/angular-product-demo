@@ -4,6 +4,7 @@ import {AsyncPipe, NgForOf, NgIf} from "@angular/common";
 import {ProductService} from "../services/product.service";
 import {Product} from "../model/product.model";
 import {Router} from "@angular/router";
+import {AppStateService} from "../services/app-state.service";
 
 @Component({
   selector: 'app-products',
@@ -19,29 +20,34 @@ import {Router} from "@angular/router";
 export class ProductsComponent implements OnInit{
 
 
-  keyword: string = "";
-  products: any;
-  errors: any;
-  page: number = 1;
-  pageSize: number = 10
-  totalPages: number = 3
-  currentPage: number = 1
+
 
   constructor(private productService: ProductService,
-              private router: Router) {
+              private router: Router,
+              public appState: AppStateService) {
   }
 
   ngOnInit(): void {
     this.getProducts()
+
   }
 
   searchProducts(keyword: string) {
-    this.currentPage = 1;
-    this.totalPages = 0;
-    this.productService.searchByKeyword(keyword, this.currentPage, this.pageSize).subscribe(
+
+    this.appState.setProductState({
+      status: "LOADING"
+    })
+    this.productService.searchByKeyword(keyword, this.appState.productState.currentPage, this.appState.productState.totalPages).subscribe(
       {
-        next: (response) => this.products = response,
-        error: (error) => console.log(error)
+        next: (response) => {
+          this.appState.productState.products = response
+          this.appState.setProductState({
+            status: "LOADED"
+          })
+        },
+        error: (error) => {
+
+        }
 
       }
     );
@@ -60,27 +66,27 @@ export class ProductsComponent implements OnInit{
 
     this.productService.deleteProduct(product).subscribe({
       next: (response) => {
-        this.products.splice(product.id, 1)
+        this.appState.productState.products.splice(product.id, 1)
       }
     });
   }
   getProducts(){
-    this.productService.getProducts(this.page, this.pageSize).subscribe({
+    this.productService.getProducts(this.appState.productState.page, this.appState.productState.pageSize).subscribe({
       next: (responseData) => {
         console.log(responseData)
-        this.products= responseData.body as Product[]
+        this.appState.productState.products = responseData.body as Product[]
         let totalProducts: number =parseInt(responseData.headers.get("x-total-count")!)
-        this.totalPages =Math.floor( totalProducts/this.pageSize)
-        console.log(this.totalPages)
-        if (totalProducts % this.pageSize != 0){
-          this.totalPages = this.totalPages + 1
+        this.appState.productState.totalPages =Math.floor( totalProducts/this.appState.productState.pageSize)
+
+        if (totalProducts % this.appState.productState.pageSize != 0){
+          this.appState.productState.totalPages = this.appState.productState.totalPages + 1
         }
       }
     });
   }
 
   paginate(page: number) {
-    this.currentPage = page
+    this.appState.productState.currentPage = page
     this.getProducts();
 
   }

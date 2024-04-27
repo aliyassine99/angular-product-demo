@@ -1,10 +1,14 @@
+<div *ngIf="appState.productState.status == 'LOADING'" class="spinner-border" role="status">
+  <span class="sr-only">appState.productState.status{{appState.productState.status}}</span>
+</div>
+
 <div class="p-3">
   <div class="card">
     <div class="card-body">
       <div class="card-body">
         <div>
-          <input class="p-1"  type="text" [(ngModel)]="keyword">
-          <button  (click)="searchProducts(keyword)"
+          <input class="p-1"  type="text" [(ngModel)]="appState.productState.keyword">
+          <button  (click)="searchProducts(appState.productState.keyword)"
                    class="btn btn-outline-success ms-1">
             Search
           </button>
@@ -17,7 +21,7 @@
         </tr>
         </thead>
         <tbody>
-        <tr *ngFor="let product of products">
+        <tr *ngFor="let product of appState.productState.products">
           <td>{{product.name}}</td>
           <td>{{product.price}}</td>
           <td>
@@ -48,3 +52,4 @@
     </div>
   </div>
 </div>
+
