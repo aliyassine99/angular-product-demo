@@ -51,7 +51,7 @@ export class EditProductComponent implements OnInit{
     let product = this.productForm.value;
     this.productService.updateProduct(product).subscribe({
       next: (response: any) => {
-        this.router.navigate(["/products"]);
+        this.router.navigate(["/admin/products"]);
       }
 
     });

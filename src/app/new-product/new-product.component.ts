@@ -36,7 +36,7 @@ export class NewProductComponent implements OnInit{
     this.product = this.productForm.value;
     this.productService.saveProduct(this.product).subscribe({
       next: (data) =>{
-        this.router.navigate(["/"]);
+        this.router.navigate(["/admin/products"]);
       }
     });
 

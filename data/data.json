@@ -1,15 +1,43 @@
 {
+  "users": [
+    {
+      "id": "ali",
+      "password": "ali",
+      "roles": [
+        "USER"
+      ],
+      "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IjjkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c"
+    },
+    {
+      "id": "yass",
+      "password": "MTIz",
+      "roles": [
+        "USER"
+      ],
+      "token": "eyJhbGciOiJIUzI1NiIsInR5cjjCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c"
+
+    },
+    {
+      "id": "yass",
+      "password": "yass",
+      "roles": [
+        "ADMIN"
+      ],
+      "token": "eyJhbGciOiJIUzI1NiIsInR5cjjCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c"
+
+    }
+  ],
   "products": [
     {
       "id": "4",
-      "name": "Smart 99",
+      "name": "Laptop",
       "price": "4500",
-      "checked": false
+      "checked": true
     },
     {
       "name": "Smart 67",
       "price": "4500",
-      "checked": false,
+      "checked": true,
       "id": "5"
     },
     {
@@ -22,7 +50,7 @@
       "id": "a6a7",
       "name": "Rfff",
       "price": "23",
-      "checked": false
+      "checked": true
     },
     {
       "id": "6cd7",
